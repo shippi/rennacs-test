@@ -5,7 +5,7 @@ CREATE TABLE users (
     address varchar(255) NOT NULL,
     email varchar(255) NOT NULL,
     phone_number varchar(255) NOT NULL,
-    created_at DATE NOT NULL,
+    created_at DATE NOT NULL DEFAULT CURRENT_DATE,
 
     --check constraints for valid email, address, and phone number
     CONSTRAINT proper_email CHECK (email ~ '^[a-zA-Z0-9.!#$%&''*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$' ),

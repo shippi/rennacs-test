@@ -9,8 +9,11 @@ datasource db {
 
 /// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
 model users {
-  id           Int    @id @default(autoincrement())
-  address      String @db.VarChar(255)
-  email        String @db.VarChar(255)
-  phone_number String @db.VarChar(255)
+  id           Int      @id @default(autoincrement())
+  first_name   String   @db.VarChar
+  last_name    String   @db.VarChar
+  address      String   @db.VarChar
+  email        String   @db.VarChar
+  phone_number String   @db.VarChar
+  created_at   DateTime @default(dbgenerated("CURRENT_DATE")) @db.Date
 }
