@@ -20,7 +20,7 @@ function UsersTable({ users } : Props) {
     <tbody>
       {
         users.map((currUser, i) => (
-          <tr key={i} className="hover:bg-stone-100 text-sm">
+          <tr key={i} className="hover:bg-stone-100 text-sm duration-300">
             <th className="border text-left px-4 py-2 text-xs">{currUser.id}</th>
             <td className="border-b px-4 py-2">{currUser.first_name}</td>
             <td className="border-b px-4 py-2">{currUser.last_name}</td>
