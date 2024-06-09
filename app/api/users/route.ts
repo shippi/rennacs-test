@@ -1,4 +1,5 @@
 import prisma from "@/lib/db";
+import { getPaginationValues } from "@/utils/getPaginationValues";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -10,6 +11,21 @@ const createUserSchema = z.object({
 	phone_number: z.string().min(1).max(255),
 });
 
+export async function GET(req: NextRequest) {
+	const { startIndex, limit } = getPaginationValues(req);
+	try {
+		const users = await prisma.users.findMany({
+			skip: startIndex,
+			take: limit
+		});
+		return NextResponse.json({ users },  { status: 200 });
+	}
+	catch (error) {
+		return NextResponse.json({ error }, { status: 500 });
+	}
+
+}
+
 export async function POST(req: NextRequest) {
 		const body = await req.json();
 		const bodyValidation = createUserSchema.safeParse(body);
@@ -17,7 +33,7 @@ export async function POST(req: NextRequest) {
 
     try {
 			await prisma.users.create({ data: body });
-      return NextResponse.json({ message: "User successfully added." },  {status: 201 });
+      return NextResponse.json({ message: "User successfully added." },  { status: 201 });
     }
     catch (error) {
       return NextResponse.json({ error }, { status: 500 });
