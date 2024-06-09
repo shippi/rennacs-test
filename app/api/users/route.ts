@@ -32,8 +32,8 @@ export async function POST(req: NextRequest) {
 		if (!bodyValidation.success) return NextResponse.json(bodyValidation.error.errors, { status: 400 });
 
     try {
-			await prisma.users.create({ data: body });
-      return NextResponse.json({ message: "User successfully added." },  { status: 201 });
+			const newUser = await prisma.users.create({ data: body });
+      return NextResponse.json(newUser, { status: 201 });
     }
     catch (error) {
       return NextResponse.json({ error }, { status: 500 });
