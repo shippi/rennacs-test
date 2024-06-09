@@ -1,11 +1,11 @@
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
-    first_name varchar(255) NOT NULL,
-    last_name varchar(255) NOT NULL,
-    address varchar(255) NOT NULL,
-    email varchar(255) NOT NULL,
-    phone_number varchar(255) NOT NULL,
-    created_at DATE NOT NULL DEFAULT CURRENT_DATE,
+    first_name varchar NOT NULL,
+    last_name varchar NOT NULL,
+    address varchar NOT NULL,
+    email varchar NOT NULL,
+    phone_number varchar NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 
     --check constraints for valid email, address, and phone number
     CONSTRAINT proper_email CHECK (email ~ '^[a-zA-Z0-9.!#$%&''*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$' ),
