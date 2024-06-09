@@ -2,9 +2,10 @@ import { User } from "@/types/Users";
 import DeleteButton from "./DeleteButton";
 
 interface Props {
-  users: User[]
+  users: User[],
+  currentPage: number
 }
-function UsersTable({ users } : Props) {
+function UsersTable({ users, currentPage } : Props) {
   const emptyCount = Array(20 - users.length).fill(null);
   return (
     <div className="overflow-x-auto">
@@ -30,7 +31,7 @@ function UsersTable({ users } : Props) {
                 <td className="border-b px-4 py-2 break-words">{currUser.phone_number}</td>
                 <td className="flex gap-x-4 justify-between items-center border-b px-4 py-2">
                   {(new Date(currUser.created_at)).toLocaleString()}
-                  <DeleteButton userId={currUser.id}/>
+                  <DeleteButton userId={currUser.id} currentPage={currentPage}/>
                 </td>
                 
               </tr>

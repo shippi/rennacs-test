@@ -25,7 +25,7 @@ export default function Home() {
         {
           !isLoading &&
           <>
-            <UsersTable users={data.users}/>
+            <UsersTable currentPage={page} users={data.users}/>
             <Pagination count={count} currentPage={page} setPage={setPage}/>
           </>
         }

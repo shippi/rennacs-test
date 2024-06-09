@@ -3,16 +3,17 @@ import axios from "axios"
 
 interface Props {
   userId: number,
+  currentPage: number,
   className?: string
 }
 
-function DeleteButton({ userId, className } : Props) {
+function DeleteButton({ userId, currentPage, className } : Props) {
   const queryClient = useQueryClient();
   const deleteUser = useMutation({
     mutationFn: async() => await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}users/${userId}`),
     onSuccess: () => {
       console.log("Success");
-      queryClient.resetQueries();
+      queryClient.invalidateQueries({ queryKey: ["users", currentPage]});
     }
   })
 

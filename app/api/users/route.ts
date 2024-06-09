@@ -15,6 +15,9 @@ export async function GET(req: NextRequest) {
 	const { startIndex, limit } = getPaginationValues(req);
 	try {
 		const users = await prisma.users.findMany({
+			orderBy: {
+				created_at: 'desc',
+			},
 			skip: startIndex,
 			take: limit
 		});
