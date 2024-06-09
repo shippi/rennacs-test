@@ -3,7 +3,7 @@ import Pagination from "@/components/Pagination";
 import UsersTable from "@/components/UsersTable";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function Home() {
   const [page, setPage] = useState(1);

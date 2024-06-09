@@ -1,11 +1,11 @@
 import { User } from "@/types/Users";
+import DeleteButton from "./DeleteButton";
 
 interface Props {
   users: User[]
 }
 function UsersTable({ users } : Props) {
   const emptyCount = Array(20 - users.length).fill(null);
-  console.log(emptyCount)
   return (
     <div className="overflow-x-auto">
       <table className="bg-white rounded-lg shadow-lg table-fixed">
@@ -22,13 +22,17 @@ function UsersTable({ users } : Props) {
         <tbody>
           {
             users.map((currUser, i) => (
-              <tr key={i} className="hover:bg-stone-100 text-sm duration-300">
+              <tr key={i} className="hover:bg-stone-100 text-sm duration-300 group">
                 <th className="border text-left px-4 py-2 text-xs">{currUser.id}</th>
                 <td className="border-b px-4 py-2 break-words">{currUser.first_name}</td>
                 <td className="border-b px-4 py-2 break-words">{currUser.last_name}</td>
                 <td className="max-w-64 border-b px-4 py-2 break-words">{currUser.email}</td>
                 <td className="border-b px-4 py-2 break-words">{currUser.phone_number}</td>
-                <td className="border-b px-4 py-2">{(new Date(currUser.created_at)).toLocaleString()}</td>
+                <td className="flex gap-x-4 justify-between items-center border-b px-4 py-2">
+                  {(new Date(currUser.created_at)).toLocaleString()}
+                  <DeleteButton userId={currUser.id}/>
+                </td>
+                
               </tr>
             ))
           }
