@@ -22,22 +22,34 @@ function Pagination({ count, currentPage, setPage }: Props) {
     }
   }
 
-  const pagesCut = getPages(100, 5, currentPage);
+  const pagesCut = getPages(totalPageCount, 5, currentPage);
   const pageNums = Array(pagesCut.end - pagesCut.start).fill(0).map((val, i) => i + pagesCut.start);
 
-  console.log(pageNums)
   return (
-    <div className="flex gap-x-2">
+    <div className="flex gap-x-2 py-8">
+      <button 
+        className={`flex items-center justify-center w-8 h-8 p-4 bg-stone-100 rounded-md shadow-md hover:bg-stone-200 duration-200 ${currentPage === 1 && "pointer-events-none bg-stone-400 text-stone-500"}`}
+        onClick={() => setPage(currentPage - 1)}
+      >
+        <i className="bi bi-arrow-left-short text-lg"/>
+      </button>
       {
         pageNums.map(num => (
           <button 
             key={num} 
-            className="flex items-center justify-center w-8 h-8 p-4 bg-stone-100 rounded-md shadow-md hover:bg-stone-200 duration-200"
+            className={`flex items-center justify-center w-8 h-8 p-4 bg-stone-100 rounded-md shadow-md hover:bg-stone-200 duration-200 ${num === currentPage && "!bg-blue-200"}`}
+            onClick={() => setPage(num)}
           >
             {num}
           </button>
         ))
       }
+      <button 
+        className={`flex items-center justify-center w-8 h-8 p-4 bg-stone-100 rounded-md shadow-md hover:bg-stone-200 duration-200 ${currentPage === totalPageCount && "pointer-events-none bg-stone-400 text-stone-500"}`}
+        onClick={() => setPage(currentPage + 1)}
+      >
+        <i className="bi bi-arrow-right-short text-lg"/>
+      </button>
     </div>
   )
 }
