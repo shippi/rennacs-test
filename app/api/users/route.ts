@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
 
     try {
 			await prisma.users.create({ data: body });
-      return NextResponse.json({ "message": "User successfully added." },  {status: 201 });
+      return NextResponse.json({ message: "User successfully added." },  {status: 201 });
     }
     catch (error) {
       return NextResponse.json({ error }, { status: 500 });
