@@ -12,7 +12,6 @@ function DeleteButton({ userId, currentPage, className } : Props) {
   const deleteUser = useMutation({
     mutationFn: async() => await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}users/${userId}`),
     onSuccess: () => {
-      console.log("Success");
       queryClient.invalidateQueries({ queryKey: ["users", currentPage]});
     }
   })

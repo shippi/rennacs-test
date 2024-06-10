@@ -1,12 +1,14 @@
 import { User } from "@/types/Users";
 import DeleteButton from "./DeleteButton";
 import CreateButton from "./CreateButton";
+import { useContext } from "react";
+import { UsersPageContext } from "@/context/UsersPageContext";
 
 interface Props {
-  users: User[],
-  currentPage: number
+  users: User[]
 }
-function UsersTable({ users, currentPage } : Props) {
+function UsersTable({ users } : Props) {
+  const { currentPage } = useContext(UsersPageContext);
   const emptyCount = Array(20 - users.length).fill(null);
 
   return (

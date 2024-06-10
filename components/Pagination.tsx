@@ -1,10 +1,9 @@
-interface Props {
-  count: number,
-  currentPage: number
-  setPage: Function
-}
+import { UsersPageContext } from "@/context/UsersPageContext";
+import { useContext } from "react";
 
-function Pagination({ count, currentPage, setPage }: Props) {
+
+function Pagination() {
+  const {count, page, setPage} = useContext(UsersPageContext);
   const totalPageCount = Math.ceil(count/20);
   
   const getPages = (pagesCount: number, pagesCutCount: number, currentPage: number) => {
@@ -22,14 +21,14 @@ function Pagination({ count, currentPage, setPage }: Props) {
     }
   }
 
-  const pagesCut = getPages(totalPageCount, 5, currentPage);
+  const pagesCut = getPages(totalPageCount, 5, page);
   const pageNums = Array(pagesCut.end - pagesCut.start).fill(0).map((val, i) => i + pagesCut.start);
 
   return (
     <div className="flex gap-x-2 py-8">
       <button 
-        className={`flex items-center justify-center w-8 h-8 p-4 bg-stone-100 rounded-md shadow-md hover:bg-stone-200 duration-200 ${currentPage === 1 && "pointer-events-none bg-stone-400 text-stone-500"}`}
-        onClick={() => setPage(currentPage - 1)}
+        className={`flex items-center justify-center w-8 h-8 p-4 bg-stone-100 rounded-md shadow-md hover:bg-stone-200 duration-200 ${page === 1 && "pointer-events-none bg-stone-400 text-stone-500"}`}
+        onClick={() => setPage(page - 1)}
       >
         <i className="bi bi-arrow-left-short text-lg"/>
       </button>
@@ -37,7 +36,7 @@ function Pagination({ count, currentPage, setPage }: Props) {
         pageNums.map(num => (
           <button 
             key={num} 
-            className={`flex items-center justify-center w-8 h-8 p-4 bg-stone-100 rounded-md shadow-md hover:bg-stone-200 duration-200 ${num === currentPage && "!bg-blue-200"}`}
+            className={`flex items-center justify-center w-8 h-8 p-4 bg-stone-100 rounded-md shadow-md hover:bg-stone-200 duration-200 ${num === page && "!bg-blue-200"}`}
             onClick={() => setPage(num)}
           >
             {num}
@@ -45,8 +44,8 @@ function Pagination({ count, currentPage, setPage }: Props) {
         ))
       }
       <button 
-        className={`flex items-center justify-center w-8 h-8 p-4 bg-stone-100 rounded-md shadow-md hover:bg-stone-200 duration-200 ${currentPage === totalPageCount && "pointer-events-none bg-stone-400 text-stone-500"}`}
-        onClick={() => setPage(currentPage + 1)}
+        className={`flex items-center justify-center w-8 h-8 p-4 bg-stone-100 rounded-md shadow-md hover:bg-stone-200 duration-200 ${page === totalPageCount && "pointer-events-none bg-stone-400 text-stone-500"}`}
+        onClick={() => setPage(page + 1)}
       >
         <i className="bi bi-arrow-right-short text-lg"/>
       </button>
