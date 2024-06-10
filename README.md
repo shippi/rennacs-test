@@ -1,7 +1,7 @@
 # Rennacs Coding Project Test
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-Link to working web app: https://rennacs-test.vercel.app/
+Link to working web app: https://rennacs-test.vercel.app/<br/><br/>
 ## Project Details
 The entire coding project uses the Next.js 14 framework, and the repository contains both the front-end and the Users API. PostgreSQL is used for the database. Other libraries used are as listed:
 <ul>
@@ -12,7 +12,7 @@ The entire coding project uses the Next.js 14 framework, and the repository cont
   <li>React Query</li>
 </ul>
 
-The project took about a couple of days to finish, working on it on-and-off while I found free time.
+The project took about a couple of days to finish, working on it on-and-off while I found free time.<br/><br/>
 
 ## Getting Started
 A link to the working web app is provided at the top of the README. If you want to deploy the project locally, here are the instructions to do so:
@@ -25,13 +25,13 @@ A link to the working web app is provided at the top of the README. If you want 
     <li>DATABASE_URL="postgresql://janedoe:mypassword@localhost:5432/mydb?schema=sample"</li>
     <li>NEXT_PUBLIC_API_URL="http://localhost:3000/api/"</li>
   </ul>
-<span style="font-size:0.9em;">
 Note: The database URL is just an example and needs to be replaced by a URL of the Postgres database you're going to use. For more information, refer to this - https://www.prisma.io/docs/orm/reference/connection-urls
-</span>
+
 
 #### 4. Run `npx prisma db seed` to seed the database with dummy data.
 
 #### 5. Run `npm run dev` to run the development server locally.
+<br/>
 
 ## API Routes
 
