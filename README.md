@@ -46,32 +46,24 @@ Note: The database URL is just an example and needs to be replaced by a URL of t
 
 
 `POST` http://localhost:3000/api/users
-> Creates a new row in the users table using the information provided in the body of the request. 
-<br/><br/>
-Body example:
-<br/>
-{
-  <br/>
+> Creates a new row in the users table using the information provided in the body of the request.<br/><br/>
+Body example: <br/>
+{<br/>
   &nbsp;&nbsp;&nbsp;&nbsp;"first_name": "John",<br/>
   &nbsp;&nbsp;&nbsp;&nbsp;"last_name": "Doe",<br/>
   &nbsp;&nbsp;&nbsp;&nbsp;"address": "998 Heaphy Terrace, Fairfield, Hamilton, 3214",<br/>
   &nbsp;&nbsp;&nbsp;&nbsp;"email": "JohnDoe@mail.com",<br/>
   &nbsp;&nbsp;&nbsp;&nbsp;"phone_number": "(021) 123 4567"<br/>
-} 
-<br/><br/>
-<span style="font-size:0.9em;">
+}<br/><br/>
 Notes: <br/>
 The address in the body must be in the format "Address, Suburb/Town, City, Postal Code".<br/>
-Brackets, spaces, and dashes can be omitted from the phone_number field and still be valid.
-</span>
+Brackets, spaces, and dashes can be omitted from the phone_number field and still be valid.<br/>
+
 
 `PUT` http://localhost:3000/api/users/[id]
-> Updates the column(s) for a particular user based on the information passed in the body. All fields in the body example of the previous POST request are valid fields in the body of this PUT route.
-<br/><br/>
-Body example:
-<br/>
-{
-  <br/>
+> Updates the column(s) for a particular user based on the information passed in the body. All fields in the body example of the previous POST request are valid fields in the body of this PUT route. <br/><br/>
+Body example: <br/>
+{ <br/>
   &nbsp;&nbsp;&nbsp;&nbsp;"first_name": "Michael",<br/>
   &nbsp;&nbsp;&nbsp;&nbsp;"email": "MichaelDoe@mail.com"<br/>
 }
