@@ -8,16 +8,7 @@ import { UsersPageContext } from "@/context/UsersPageContext";
 import Alert from "./Alert";
 
 function UsersPage() {
-  const { alertOpen, page, setCount } = useContext(UsersPageContext);
-
-  const { data, isLoading, error, isError } = useQuery({
-		queryKey: ["users", page],
-		queryFn: async() => {
-			const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}users?page=${page}`);
-			setCount(data.count);
-      return data;
-		}
-	});
+  const { alertOpen } = useContext(UsersPageContext);
 
   return (
     <>
@@ -26,7 +17,7 @@ function UsersPage() {
       <main className="flex flex-col gap-y-2 justify-center items-center min-h-screen pt-4 bg-gradient-to-b from-stone-200 to-gray-300">
         <div className="flex flex-col gap-y-2">
           <CreateButton/>
-          <UsersTable users={data?.users || []}/>
+          <UsersTable/>
         </div>
         <Pagination/>
       </main>

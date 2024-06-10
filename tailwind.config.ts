@@ -7,10 +7,10 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    animation: { 
-      alert: 'alert 2s cubic-bezier(0,1,0.4,1)',
-    },
     extend: {
+      animation: { 
+        alert: 'alert 2s cubic-bezier(0,1,0.4,1)'
+      },
       keyframes: {
         "alert": {
           "0%": {
