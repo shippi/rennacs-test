@@ -1,14 +1,10 @@
 import { User } from "@/types/Users";
 import DeleteButton from "./DeleteButton";
-import CreateButton from "./CreateButton";
-import { useContext } from "react";
-import { UsersPageContext } from "@/context/UsersPageContext";
 
 interface Props {
   users: User[]
 }
 function UsersTable({ users } : Props) {
-  const { currentPage } = useContext(UsersPageContext);
   const emptyCount = Array(20 - users.length).fill(null);
 
   return (
@@ -35,7 +31,7 @@ function UsersTable({ users } : Props) {
                 <td className="border-b px-4 py-2 break-words">{currUser.phone_number}</td>
                 <td className="flex gap-x-4 justify-between items-center border-b px-4 py-2">
                   {currUser.address}
-                  <DeleteButton userId={currUser.id} currentPage={currentPage}/>
+                  <DeleteButton userId={currUser.id}/>
                 </td>
               </tr>
             ))

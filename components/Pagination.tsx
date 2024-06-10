@@ -4,7 +4,7 @@ import { useContext } from "react";
 
 function Pagination() {
   const {count, page, setPage} = useContext(UsersPageContext);
-  const totalPageCount = Math.ceil(count/20);
+  const totalPageCount = Math.ceil(count/20) || 1;
   
   const getPages = (pagesCount: number, pagesCutCount: number, currentPage: number) => {
     const ceiling = Math.ceil(pagesCutCount / 2);

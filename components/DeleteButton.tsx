@@ -1,18 +1,29 @@
+import { UsersPageContext } from "@/context/UsersPageContext";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios"
+import { useContext } from "react";
 
 interface Props {
   userId: number,
-  currentPage: number,
   className?: string
 }
 
-function DeleteButton({ userId, currentPage, className } : Props) {
+function DeleteButton({ userId, className } : Props) {
+  const { setAlertOpen, setAlertMessage, setAlertSuccess, page } = useContext(UsersPageContext);
+
   const queryClient = useQueryClient();
   const deleteUser = useMutation({
     mutationFn: async() => await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}users/${userId}`),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["users", currentPage]});
+      queryClient.invalidateQueries({ queryKey: ["users", page]});
+      setAlertOpen(true);
+      setAlertMessage("User successfully deleted.");
+      setAlertSuccess(true);
+    },
+    onError: () => {
+      setAlertOpen(true);
+      setAlertMessage("Server error.");
+      setAlertSuccess(false);
     }
   })
 

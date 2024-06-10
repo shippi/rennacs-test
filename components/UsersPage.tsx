@@ -5,9 +5,10 @@ import CreateButton from "./CreateButton";
 import Pagination from "./Pagination";
 import UsersTable from "./UsersTable";
 import { UsersPageContext } from "@/context/UsersPageContext";
+import Alert from "./Alert";
 
 function UsersPage() {
-  const { page, setCount } = useContext(UsersPageContext);
+  const { alertOpen, page, setCount } = useContext(UsersPageContext);
 
   const { data, isLoading, error, isError } = useQuery({
 		queryKey: ["users", page],
@@ -21,12 +22,12 @@ function UsersPage() {
   return (
     <>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
-      <main className="flex flex-col gap-y-2 justify-center items-center h-screen bg-gradient-to-b from-stone-200 to-gray-300">
+      {alertOpen && <Alert/>}
+      <main className="flex flex-col gap-y-2 justify-center items-center min-h-screen pt-4 bg-gradient-to-b from-stone-200 to-gray-300">
         <div className="flex flex-col gap-y-2">
           <CreateButton/>
           <UsersTable users={data?.users || []}/>
         </div>
-        
         <Pagination/>
       </main>
     </>

@@ -5,7 +5,7 @@ import axios from "axios";
 import { UsersPageContext } from "@/context/UsersPageContext";
 
 function CreateUserModal() {
-  const { setCreateUserModalOpen, page } = useContext(UsersPageContext)
+  const { setCreateUserModalOpen, setAlertOpen, setAlertMessage, setAlertSuccess, page } = useContext(UsersPageContext)
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -31,6 +31,14 @@ function CreateUserModal() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["users", page]});
       setCreateUserModalOpen(false);
+      setAlertOpen(true);
+      setAlertMessage("User successfully created.");
+      setAlertSuccess(true);
+    },
+    onError: () => {
+      setAlertOpen(true);
+      setAlertMessage("Server error.");
+      setAlertSuccess(false);
     }
   }) 
 
