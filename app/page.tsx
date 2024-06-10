@@ -23,8 +23,11 @@ export default function Home() {
     <>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
       <main className="flex flex-col gap-y-2 justify-center items-center h-screen bg-gradient-to-b from-stone-200 to-gray-300">
-
-        <UsersTable currentPage={page} users={data?.users || []}/>
+        <div className="flex flex-col gap-y-2">
+          <CreateButton/>
+          <UsersTable currentPage={page} users={data?.users || []}/>
+        </div>
+        
         <Pagination count={count} currentPage={page} setPage={setPage}/>
       </main>
     </>

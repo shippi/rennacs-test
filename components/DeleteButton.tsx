@@ -19,7 +19,7 @@ function DeleteButton({ userId, currentPage, className } : Props) {
 
   return (
     <button 
-      className={`w-5 h-5 bg-red-500 rounded-sm text-white hover:bg-red-600 ${className}`}
+      className={`px-[4px] py-[1px] bg-red-500 rounded-sm text-white hover:bg-red-600 ${className}`}
       onClick={ () => deleteUser.mutate() }
     >
       <i className="bi bi-trash-fill"/>
