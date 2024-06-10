@@ -1,5 +1,6 @@
 import { User } from "@/types/Users";
 import DeleteButton from "./DeleteButton";
+import CreateButton from "./CreateButton";
 
 interface Props {
   users: User[],
@@ -9,7 +10,8 @@ function UsersTable({ users, currentPage } : Props) {
   const emptyCount = Array(20 - users.length).fill(null);
 
   return (
-    <div className="overflow-x-auto">
+    <div className="flex flex-col gap-y-2 overflow-x-auto">
+      <CreateButton/>
       <table className="bg-white rounded-lg shadow-lg table-fixed">
         <thead className="text-left text-xs">
           <tr>
