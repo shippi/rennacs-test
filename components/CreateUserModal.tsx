@@ -33,11 +33,25 @@ function CreateUserModal({ closeHandler } : Props) {
         </div>
         <div className="flex w-full justify-between gap-x-2 px-8">
           <label className="text-stone-800" htmlFor="email">Email:</label>
-          <input className="rounded-sm border-2 px-1" type="text" id="email" required value={email} onChange={e => setEmail(e.target.value)}></input>
+          <input 
+            className="rounded-sm border-2 px-1" 
+            type="email" id="email" 
+            required 
+            value={email} 
+            onChange={e => setEmail(e.target.value)}
+          />
         </div>
         <div className="flex w-full justify-between gap-x-2 px-8">
           <label className="text-stone-800" htmlFor="phoneNumber">Phone:</label>
-          <input className="rounded-sm border-2 px-1" type="text" id="phoneNumber" required value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)}></input>
+          <input 
+            className="rounded-sm border-2 px-1" 
+            type="text" id="phoneNumber" 
+            required 
+            value={phoneNumber} 
+            onChange={e => setPhoneNumber(e.target.value)}
+            pattern="^\W*\d\W*\d\W*\d\W*\d\W*\d\W*\d\W*\d\W*\d\W*(\d{1,2})$"
+            title="(020)-123-4567 or 0800-123-456—spaces, brackets, and dashes are not required"
+          />
         </div>
         <div className="w-5/6 h-[1px] bg-stone-300 my-2"/>
         <div className="flex w-full justify-between gap-x-2 px-8">
@@ -54,7 +68,15 @@ function CreateUserModal({ closeHandler } : Props) {
         </div>
         <div className="flex w-full justify-between gap-x-2 px-8">
           <label className="text-stone-800" htmlFor="postalCode">Postal Code:</label>
-          <input className="rounded-sm border-2 px-1" type="text" id="postalCode" required value={postalCode} onChange={e => setPostalCode(e.target.value)}></input>
+          <input 
+            className="rounded-sm border-2 px-1" 
+            type="text" id="postalCode" 
+            required 
+            value={postalCode} 
+            onChange={e => setPostalCode(e.target.value)}
+            pattern="[0-9]{4}"
+            title="1234"
+          />
         </div>
         <div className="w-full h-2"/>
         <button className="bg-blue-500 text-white w-32 py-1 rounded-md hover:bg-blue-600" type="submit">Create</button>
