@@ -22,13 +22,8 @@ export default function Home() {
     <>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
       <main className="flex flex-col gap-y-2 justify-center items-center w-screen h-screen bg-gradient-to-b from-stone-200 to-gray-300">
-        {
-          !isLoading &&
-          <>
-            <UsersTable currentPage={page} users={data.users}/>
-            <Pagination count={count} currentPage={page} setPage={setPage}/>
-          </>
-        }
+        <UsersTable currentPage={page} users={data?.users || []}/>
+        <Pagination count={count} currentPage={page} setPage={setPage}/>
       </main>
     </>
   );

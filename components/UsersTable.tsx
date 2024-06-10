@@ -7,6 +7,7 @@ interface Props {
 }
 function UsersTable({ users, currentPage } : Props) {
   const emptyCount = Array(20 - users.length).fill(null);
+
   return (
     <div className="overflow-x-auto">
       <table className="bg-white rounded-lg shadow-lg table-fixed">
@@ -17,7 +18,7 @@ function UsersTable({ users, currentPage } : Props) {
             <th className="w-32 bg-blue-100 border text-left px-4 py-2">Last Name</th>
             <th className="w-64 bg-blue-100 border text-left px-4 py-2">Email</th>
             <th className="w-36 bg-blue-100 border text-left px-4 py-2">Phone Number</th>
-            <th className="w-42 bg-blue-100 border text-left px-4 py-2">Created At</th>
+            <th className="w-60 bg-blue-100 border text-left px-4 py-2">Created At</th>
           </tr>
         </thead>
         <tbody>
